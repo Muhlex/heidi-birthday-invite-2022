@@ -4,11 +4,11 @@
 
 	export let what;
 
-	const pathname = decodeURIComponent(window.location.pathname).replaceAll("/", "");
+	const hash = decodeURIComponent(window.location.hash).replaceAll("#", "");
 	let replaceParam = "";
-	console.log(window.btoa(pathname));
+	console.log(window.btoa(hash));
 	try {
-		replaceParam = window.atob(pathname);
+		replaceParam = window.atob(hash);
 	} catch (e) {
 		// noop
 	}

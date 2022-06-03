@@ -64,7 +64,7 @@
 <style>
 	main {
 		flex-grow: 1;
-		padding: 1em;
+		padding: clamp(14px, 6vw, 128px);
 
 		display: flex;
 		justify-content: center;

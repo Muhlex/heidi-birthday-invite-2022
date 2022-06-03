@@ -1,0 +1,82 @@
+
+:root {
+	--font: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+	helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+	--font: 'Unica One', sans-serif;
+	--font-mono: 'Nova Mono', monospace;
+
+	--col-bright: 255, 255, 255;
+	--col-dark: 34, 34, 34;
+
+	--col-grad-a: 133, 36, 224;
+	--col-grad-b: 99, 119, 219;
+	--col-grad-c: 45, 182, 214;
+	--col-grad-d: 40, 186, 201;
+	--col-grad-e: 24, 196, 155;
+
+	--col-text: var(--col-dark);
+	--col-bg: 240, 240, 240;
+	--col-bg1: 239, 239, 247;
+	--col-accent: 94, 94, 133;
+	--col-hover: 130, 130, 247;
+	--col-active: 66, 66, 163;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--col-text: var(--col-bright);
+		--col-bg: 58, 58, 82;
+		--col-bg1: 25, 25, 73;
+		--col-accent: 91, 91, 139;
+		--col-hover: 116, 116, 194;
+		--col-active: 148, 148, 255;
+	}
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+	font-family: var(--font);
+	color: rgb(var(--col-text));
+	background-color: rgb(var(--col-bg));
+}
+
+body {
+	margin: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#app {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+input, button, select {
+	font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 1.5em;
+}
+
+h1 { font-size: 2em }
+h2 { font-size: 1.5em }
+h3 { font-size: 1.125em }
+h4 { font-size: 0.875em }
+h5 { font-size: 0.75em }
+h6 { font-size: 0.625em }
+
+h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus {
+	/* Svelte Navigator focuses headlines for accessibility. */
+	outline: none;
+}
+
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+	margin-top: 0;
+}

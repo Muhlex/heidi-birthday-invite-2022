@@ -21,7 +21,7 @@ jobs:
       with:
         node-version: '16.x'
     - run: npm ci
-    - run: npm run build
+    - run: npm run build # -- --base=/repo-name/
 
     - name: Deploy Website to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
@@ -29,3 +29,4 @@ jobs:
         publish_dir: ./dist
         publish_branch: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        cname: 2022.murl.is

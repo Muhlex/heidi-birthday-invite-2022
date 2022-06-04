@@ -5,7 +5,7 @@
 	import When from "./When.svelte";
 	import What from "./What.svelte";
 
-	export let data;
+	export let data, pers;
 
 	let whenStartEl, whenEndEl;
 
@@ -37,29 +37,18 @@
 			duration: 1000
 		});
 	});
-
-	let resizeCount = 0;
-
-	function onResize() {
-		resizeCount++;
-	}
-
 </script>
 
-<svelte:window on:resize={onResize}/>
+<div bind:this={whenStartEl} class="when-start-pos">
+	<When birthdate={data.birthdate} date={data.date} time={data.time} animate />
+</div>
 
-{#key resizeCount}
-	<div bind:this={whenStartEl} class="when-start-pos">
-		<When birthdate={data.birthdate} date={data.date} time={data.time} animate />
+<main>
+	<What what={data.what} {pers} />
+	<div bind:this={whenEndEl} class="when-end-pos">
+		<When birthdate={data.birthdate} date={data.date} time={data.time} />
 	</div>
-
-	<main>
-		<What what={data.what} />
-		<div bind:this={whenEndEl} class="when-end-pos">
-			<When birthdate={data.birthdate} date={data.date} time={data.time} />
-		</div>
-	</main>
-{/key}
+</main>
 
 <style>
 	main {
@@ -90,6 +79,8 @@
 		z-index: 1;
 		top: 0;
 		left: 0;
+		right: 0;
+		bottom: 0;
 		width: 100%;
 		height: 100%;
 

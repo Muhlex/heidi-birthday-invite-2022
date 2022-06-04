@@ -2,17 +2,9 @@
 	import { onMount } from "svelte";
 	import anime from "animejs";
 
-	export let what;
+	export let what, pers;
 
-	const hash = decodeURIComponent(window.location.hash).replaceAll("#", "");
-	let replaceParam = "";
-	console.log(window.btoa(hash));
-	try {
-		replaceParam = window.atob(hash);
-	} catch (e) {
-		// noop
-	}
-	$: whatExtended = what.map(what => ({ ...what, text: what.text.split("{REPLACE}").join(replaceParam) }));
+	$: whatExtended = what.map(what => ({ ...what, text: what.text.split("{REPLACE}").join(pers) }));
 
 	const whatEls = [];
 
@@ -22,16 +14,17 @@
 			opacity: [0, 1],
 			translateY: [-250, 0],
 			rotate: ["90deg", 0],
-			backgroundColor: ["transparent", "red"],
 			duration: 800,
-			delay: anime.stagger(100, { start: 600 })
+			delay: anime.stagger(100, { start: 6000 })
 		});
 	});
 </script>
 
 <div class="what">
 	{#each whatExtended as para, i}
-		<p bind:this={whatEls[i]} class:gradient-text={para.highlight}>{@html para.text}</p>
+		<p bind:this={whatEls[i]} class:gradient-text={para.highlight}>
+			{@html para.text}
+		</p>
 	{/each}
 </div>
 

@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from "svelte";
 	import Main from "./components/Main.svelte";
 
 	const data = {
@@ -13,6 +14,25 @@
 		]
 	};
 
+	let pers = "";
+
+	onMount(() => {
+		function handlePersonalization() {
+			const hash = decodeURIComponent(window.location.hash).replaceAll("#", "");
+			let replaceParam = "";
+			console.log("Personalized invite link:");
+			console.log(window.location.origin + "/#" + window.btoa(hash));
+			try {
+				replaceParam = window.atob(hash);
+			} catch (e) {
+				// noop
+			}
+			return replaceParam;
+		}
+
+		pers = handlePersonalization();
+	});
+
 	let resizeCount = 0;
 
 	function onResize() {
@@ -24,5 +44,5 @@
 <svelte:window on:resize={onResize}/>
 
 {#key resizeCount}
-	<Main {data} />
+	<Main {data} {pers} />
 {/key}

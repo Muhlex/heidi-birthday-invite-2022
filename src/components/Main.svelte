@@ -20,7 +20,7 @@
 			targets: whenStartEl,
 			keyframes: [
 				{ backgroundImage: gradients1, duration: 2000, easing: "linear" },
-				{ backgroundImage: gradient2, duration: 5000, easing: "easeOutSine" }
+				{ backgroundImage: gradient2, duration: 6000, easing: "easeOutSine" }
 			]
 		});
 
@@ -32,7 +32,7 @@
 			left: endRect.left,
 			width: endRect.width,
 			height: endRect.width,
-			delay: 5000,
+			delay: 6000,
 			easing: "easeInOutQuart",
 			duration: 1000
 		});
@@ -40,13 +40,13 @@
 </script>
 
 <div bind:this={whenStartEl} class="when-start-pos">
-	<When birthdate={data.birthdate} date={data.date} time={data.time} animate />
+	<When birthdate={data.birthdate} date={data.date} time={data.time} time2={data.time2} animate />
 </div>
 
 <main>
 	<What what={data.what} {pers} />
 	<div bind:this={whenEndEl} class="when-end-pos">
-		<When birthdate={data.birthdate} date={data.date} time={data.time} />
+		<When birthdate={data.birthdate} date={data.date} time={data.time} time2={data.time2} />
 	</div>
 </main>
 
@@ -91,5 +91,6 @@
 
 	.when-end-pos {
 		margin-top: 30vh;
+		opacity: 0;
 	}
 </style>
